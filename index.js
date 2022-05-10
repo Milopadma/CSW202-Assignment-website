@@ -46,12 +46,38 @@ function setSlideshowScroll(){
     for (var i = 0; i < slideshows.length; i++){ //iterate over all elements with the class "slideshow-container"
         var slideshow = slideshows[i];
         var middle = slideshow.children[Math.floor((slideshow.children.length - 1) / 2 )]; //find the middle section of the slideshow
-        slideshow.scrollLeft = middle.offsetLeft + middle.offsetWidth / 2 - slideshow.offsetWidth / 2; //set the scroll to the middle section
+        slideshow.scrollLeft = (middle.offsetLeft + middle.offsetWidth / 2 - slideshow.offsetWidth / 2) - 30; //set the scroll to the middle section
     }
+}
 
+//accept array as parameter and run fetchProfileIcon for every item in array
+function fetchProfileIconArray(array){
+    for (var i = 0; i < array.length; i++){
+        fetchProfileIcon(array[i]);
+    }
+}
+
+//fetch from randomUserAPI and replace the content of the div with the profile icon and name
+function fetchProfileIcon(divId){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://randomuser.me/api/", true);
+    xhr.onload = function(){
+        if (this.status == 200){
+            var response = JSON.parse(this.responseText); //parse the JSON response file
+            var userprofile = response.results[0].picture; //get the profile picture from the response
+            var img = document.createElement("img"); //create an image element
+            img.src = userprofile.thumbnail; //set the source of the image
+            img.classList.add("profileIcon"); //add the class "profileIcon" to the image
+            document.getElementById(divId).appendChild(img); //append the image to the div
+            var name = response.results[0].name.first + " " + response.results[0].name.last; //get the name from response
+            document.getElementById(divId).insertAdjacentHTML('afterend', '<em style="font-weight:100">'+ name + '</em>'); //append the name to the div
+        }
+    }
+    xhr.send();
 }
 
 window.onload = function(){
     checkPage();
+    fetchProfileIconArray(["review-icon-1", "review-icon-2", "review-icon-3", "review-icon-4", "review-icon-5"]);
 }
 
