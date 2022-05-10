@@ -72,6 +72,7 @@ body {
   /* border: 1px solid red; */
   letter-spacing: -0.05em;
   line-height: 47px;
+  max-width: 450px;
 }
 
 .header-dropdown {
@@ -112,8 +113,10 @@ body {
 
 .content-subheader {
   font-size: 1.2em;
+  font-weight: 500;
   margin-top: 40px;
   margin-bottom: 40px;
+  max-width: 450px;
 }
 
 .content-button-container {
@@ -164,12 +167,14 @@ body {
 }
 
 .content-featured-subhead {
-  margin-right: 20%;
+  max-width: 360px;
   margin-left: 10px;
   font-weight: 700;
+  border-left: 3px solid black;
+  padding-left: 0.5em;
   /* border: 1px solid red; */
 }
-
+/* 
 #leftLine1:after {
   content: "";
   display: block;
@@ -180,30 +185,47 @@ body {
   height: 2em;
   background: #000000;
   margin-top: 10px;
-}
+} */
 
 .featured-name {
   font-style: italic;
   font-weight: 700;
+  text-decoration: none;
+}
+
+.featured-name:hover {
+  font-style: bold;
+  font-weight: 800;
+  text-decoration: underline;
 }
 
 .content-featured-hotel {
   display: flex;
   align-items: center;
-  margin-left: 20%;
+  margin-left: 3%;
+  margin-bottom: 5px;
+  margin-top: 2em;
+
 }
 
 /* slideshow */
-.slideshow-container{
-  overflow: scroll;
+.slideshow-container {
+  overflow-x: visible;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 
 .hotel-images{
   display: inline-block;
   width: 80%;
-  height: 10vh;
+  height: 25vh;
   object-fit: cover;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.hotel-images:hover{
+  transform: scale(1.03);
 }
 
 .content-featured-villa {

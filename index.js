@@ -1,6 +1,6 @@
 
 function buttonStartHere(){
-    console.log("hello wordld");
+    window.location.href = "roomlist.html";
 }
 
 //toggle show and hide of the dropdown content
@@ -25,16 +25,30 @@ window.onclick = function(event){
 
 //check the current page
 function checkPage(){
-    var currentPage = window.location.href;    
-    if (currentPage == "http://127.0.0.1:5500/index.html"){
+    if (window.location.href.indexOf("index") > -1){
         document.getElementById("homeNavButton").classList.add("activePage");
+        console.log("home");
+        setSlideshowScroll();
     }
-    else if (currentPage == "http://127.0.0.1:5500/about.html"){
+    else if (window.location.href.indexOf("about") > -1){
         document.getElementById("aboutNavButton").classList.add("activePage");
+        console.log("about");
     }
-    else if (currentPage == "http://127.0.0.1:5500/roomlist.html"){
+    else if (window.location.href.indexOf("roomlist") > -1){
         document.getElementById("roomlistNavButton").classList.add("activePage");
+        console.log("roomlist");
     }
+}
+
+//sets the slideshow to scroll to the middle 
+function setSlideshowScroll(){
+    var slideshows = document.getElementsByClassName("slideshow-container"); //getElementsByClassName returns an array-like object
+    for (var i = 0; i < slideshows.length; i++){ //iterate over all elements with the class "slideshow-container"
+        var slideshow = slideshows[i];
+        var middle = slideshow.children[Math.floor((slideshow.children.length - 1) / 2 )]; //find the middle section of the slideshow
+        slideshow.scrollLeft = middle.offsetLeft + middle.offsetWidth / 2 - slideshow.offsetWidth / 2; //set the scroll to the middle section
+    }
+
 }
 
 window.onload = function(){
