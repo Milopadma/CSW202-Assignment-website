@@ -11,6 +11,7 @@ body {
 body {
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 /* consistent sizing for all elements */
@@ -19,7 +20,7 @@ body {
 }
 
 .container-all {
-  padding: 0px 20px;
+  padding: 0px 30px;
 }
 
 .icon {
@@ -198,10 +199,15 @@ body {
 }
 
 /* slideshow */
+
 .slideshow-container {
   overflow-x: visible;
   overflow-y: hidden;
   white-space: nowrap;
+}
+
+.slideshow-container a{
+  text-decoration: none;
 }
 
 .hotel-images {
@@ -211,6 +217,7 @@ body {
   object-fit: cover;
   transition: transform 0.5s ease;
   cursor: pointer;
+  border-radius: 0.5em;
 }
 
 
@@ -260,7 +267,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .content-reviews-body{
@@ -364,6 +370,10 @@ body {
   .content-reviews-subhead{
     font-size: 1.2em;
     max-width: 450px;
+  }
+
+  .content-reviews-body-container {
+    align-items: center;
   }
 
 }
