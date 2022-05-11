@@ -1,24 +1,29 @@
-
+//when user clicks 'GET STARTED' button, redirect to the roomlist page
 function buttonStartHere(){
     window.location.href = "roomlist.html";
 }
 
 //toggle show and hide of the dropdown content
-function dropdownOpen(){
-    document.getElementById("dropdownContent").classList.toggle("show");
-}
+// function dropdownOpen(){
+//     var dropdown = document.getElementById("dropdownContent");
+//     if (dropdown.classList.contains('show')){
+//         dropdown.classList.remove('show');
+//     }
+//     else{
+//         dropdown.classList.add('show');
+//     }
+// }
 
 //if user clicks outside of it, close the dropdown
 window.onclick = function(event){
-    if (!event.target.matches('#buttonIcon')){
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for(i = 0; i < dropdowns.length; i++){
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')){
-                openDropdown.classList.remove('show');
-            }
+    if (!event.target.matches('#dropdownContentIcon')){
+        var dropdown = document.getElementById("dropdownContent");
+        if (dropdown.classList.contains('show')){
+            dropdown.classList.remove('show');
         }
+    } else { //this works to replace the dropdownOpen function above
+        var dropdown = document.getElementById("dropdownContent");
+        dropdown.classList.add('show');
     }
 }
 

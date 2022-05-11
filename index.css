@@ -20,11 +20,12 @@ body {
 }
 
 .container-all {
-  padding: 0px 30px;
+  padding: 0px 32px;
 }
 
 .icon {
-  width: 10em;
+  margin-top: 8px;
+  width: 184px;
   /* border: 1px solid red; */
 }
 
@@ -32,7 +33,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5em;
+  padding: 0.5em 0.5em 0.5em 0;
 }
 
 .nav-a {
@@ -45,20 +46,17 @@ body {
   border: 2px solid black;
 
   /* background has 2 values, transition switch between them on hover */
-  background: linear-gradient(
-      to right,
-      rgba(200, 200, 200, 1),
-      rgba(200, 200, 200, 1)
-    ),
+  background: 
+    linear-gradient(to right,rgba(200, 200, 200, 1),rgba(200, 200, 200, 1)),
     linear-gradient(to right, rgb(222, 140, 17), rgb(235, 230, 230));
   background-size: 100% 3px, 0 3px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 400ms;
+  transition: background-size 400ms ease-in-out, transform 400ms ease-in-out;
 }
 
 .nav-a:hover {
-  font-size: 1.05em;
+  transform: scale(1.02);
   background-size: 0 3px, 100% 3px;
 }
 
@@ -67,7 +65,7 @@ body {
   font-weight: 800;
 }
 .header-text {
-  margin-top: 40px;
+  margin-top: 32px;
   font-size: 2.5em;
   font-weight: 900;
   /* border: 1px solid red; */
@@ -85,38 +83,41 @@ body {
   background-color: #f1f1f1;
   border: none;
   color: black;
-  padding: 10px 20px;
+  padding: 8px 24px;
   font-size: 1.3em;
   font-weight: bold;
   cursor: pointer;
   position: relative;
-  top: 10px;
+  top: 16px;
 }
 
 .header-dropdown-content {
-  display: none;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out;
   position: absolute;
   background-color: #ffffff;
   min-width: 88px;
   line-height: 30px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  transition: all 0.5s ease;
 }
 
-.header-dropdown:hover .header-dropdown-content {
+/* .header-dropdown:hover .header-dropdown-content {
   display: block;
-}
+} */
 
-.header-dropdown:hover .header-dropdown-btn {
-  background-color: rgb(131, 131, 131);
+.show{
+  opacity: 1;
+  height: auto;
 }
 
 .content-subheader {
   font-size: 1.2em;
   font-weight: 500;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 32px;
+  margin-bottom: 64px;
   max-width: 450px;
 }
 
@@ -132,9 +133,9 @@ body {
   color: #f1f1f1;
   font-weight: 700;
   padding: 0.7em 5.3em;
-  margin-bottom: 60px;
+  margin-bottom: 64px;
   border: 4px solid #FF914D;
-  box-shadow: #0000004f 10px 10px 40px 10px;
+  box-shadow: #0000004f 8px 8px 32px 8px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
@@ -194,13 +195,15 @@ body {
   display: flex;
   align-items: center;
   margin-left: 3%;
-  margin-bottom: 5px;
-  margin-top: 2em;
+  margin-bottom: 8px;
+  margin-top: 16px;
 }
 
 /* slideshow */
 
 .slideshow-container {
+  padding-top: 16px;
+  padding-bottom: 16px;
   overflow-x: visible;
   overflow-y: hidden;
   white-space: nowrap;
@@ -213,16 +216,19 @@ body {
 .hotel-images {
   display: inline-block;
   width: 80%;
-  height: 25vh;
+  height: 24vh;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
   cursor: pointer;
   border-radius: 0.5em;
+
 }
 
 
 .hotel-images:hover {
   transform: scale(1.03);
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .content-featured-villa {
@@ -321,6 +327,51 @@ body {
 /* Desktop media queries  */
 @media (min-width: 900px) {
 
+  .icon {
+    position: relative;
+    margin-top: 25px;
+    top: 0.4em;
+  }
+
+  .nav-div{
+    display: inline;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .nav-a{
+    border: none;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .nav-a:hover{
+    transform: scale(1.2);
+  }
+   
+  .header-dropdown{
+    position: relative;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-dropdown-btn{
+    display: none;
+  }
+
+  .header-dropdown-content{
+    display: inline-block;
+    height: auto;
+    overflow: visible;
+    opacity: 1;
+  }
+
   .header-text {
     font-size: 3.5em;
     font-weight: 900;
@@ -356,7 +407,18 @@ body {
   .hotel-images {
     width: 80%;
     height: 45vh;
+    transition: transform 0.5s ease, margin-left 0.5s ease, margin-right 0.5s ease;
+    cursor: pointer;
+    border-radius: 0.5em;  
   }
+  
+  
+  .hotel-images:hover {
+    transform: scale(1.03);
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
 
   main {
     padding: 0 80px;
